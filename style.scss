@@ -1,0 +1,491 @@
+@import "variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  text-decoration: none;
+}
+#page {
+  width: 90%;
+  min-height: 100vh;
+  margin: auto;
+}
+//------------------------------------- Header Styles -------------------------------//
+header {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  width: 90%;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  box-shadow: 0 4px 5px -5px gray;
+  // --------- logo div styles ---------
+  .header_logo {
+    width: 20%;
+    a {
+      color: $text-color-3;
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      column-gap: 7px;
+      i {
+        background-color: $text-color-4;
+        color: white;
+        padding: 2px 5px;
+        border-radius: 50px;
+      }
+    }
+  }
+  // -------- other header elements` styles ---------
+  .header_others {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    // dashboard - date part -------
+    .dashboard_date {
+      p {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .date {
+        font-size: 14px;
+        font-weight: 700;
+        span:nth-child(1) {
+          color: $text-color-4;
+        }
+        span:nth-child(2) {
+          color: $text-color-2;
+        }
+      }
+    }
+    //------------ notifications - account part -------
+    .my_account {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 35%;
+      // -------- notifications --------
+      .notifications {
+        a {
+          color: $text-color-2;
+          font-size: 24px;
+          i {
+            padding: 0 15px;
+          }
+        }
+      }
+      // -------- profile -------
+      .profile {
+        font-weight: 700;
+        > span {
+          padding: 12px 7px;
+          border-radius: 5px;
+          background-color: $secondary-theme-color;
+          color: $text-color-4;
+        }
+        a {
+          padding: 0 5px;
+          color: $text-color-3;
+          i {
+            margin: 0 5px;
+          }
+        }
+      }
+    }
+  }
+}
+//------------------------------------- Main Styles -------------------------------//
+.main {
+  margin-top: 60px;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: row;
+  .sidebar {
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    .shortcut_element {
+      margin-bottom: 5px;
+      height: 50px;
+      button {
+        display: block;
+        width: 75%;
+        height: 100%;
+        background-color: white;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        cursor: pointer;
+        text-align: left;
+        font-weight: 700;
+        color: $text-color-3;
+        font-size: 15px;
+        transition: 0.25s;
+        // --- style for first button items----
+        &.pitch_btn {
+          background-color: $secondary-theme-color;
+          box-shadow: 0 0 5px rgba(59, 59, 59, 0.541);
+          text-align: center;
+          i {
+            color: white;
+            background-color: $text-color-4;
+            padding: 8px;
+            border-radius: 15px;
+            font-size: 15px;
+          }
+        }
+        // --- style for remaining buttons` items ----
+        i,
+        span:not(.btn-name) {
+          margin: 0 15px;
+          padding: 5px;
+          border-radius: 7px;
+          vertical-align: bottom;
+          transition: 0.1s;
+        }
+        //----- hover styles for sidebar buttons -------
+        &:hover:not(.pitch_btn) {
+          background-color: $secondary-theme-color;
+          box-shadow: 0 0 5px rgba(59, 59, 59, 0.541);
+          i,
+          span:not(.btn-name) {
+            color: white;
+            background-color: $text-color-4;
+            box-shadow: 0 0 5px rgba(59, 59, 59, 0.541);
+          }
+        }
+      }
+    }
+  }
+  //------- styles of area between header and footer --------
+  .content-wrapper {
+    width: 80%;
+    //------ user greeting panel --------
+    .user-greeting-panel {
+      display: flex;
+      background-color: $secondary-theme-color;
+      border-radius: 15px;
+      height: 200px;
+      overflow: hidden;
+      box-shadow: 0 0 5px rgba(59, 59, 59, 0.541);
+      .panel-body {
+        width: 60%;
+        padding: 0 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        .panel-title {
+          margin: 15px 0;
+          font-size: 48px;
+        }
+      }
+      .panel-img {
+        height: 200px;
+        width: 40%;
+        background: url("images/image_processing20201008-28716-1ltt5yv.png");
+        background-color: $secondary-theme-color;
+        background-blend-mode: multiply;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+      }
+    }
+    //----- overview cards --------
+    .overview {
+      margin-top: 70px;
+      display: flex;
+      // border: 1px solid black;
+      position: relative;
+      p {
+        position: absolute;
+        top: -30px;
+        left: 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: $text-color-2;
+      }
+      .overview-item {
+        // border: 1px solid black;
+        // background-color: aqua;
+        width: 25%;
+        height: 80px;
+        display: flex;
+        &:hover {
+          .ov-item-content {
+            width: 100%;
+          }
+        }
+        //----- inside overview-item -------
+        .ov-item-content {
+          height: 100%;
+          width: 90%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: 0.35s ease-in-out;
+          border-radius: 15px;
+          color: white;
+          box-shadow: 0 0 5px rgba(59, 59, 59, 0.541);
+          > div {
+            margin: 0 15px;
+          }
+          .content-icon {
+            // background-color: red;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 25px;
+          }
+        }
+        &:nth-child(2) {
+          justify-content: flex-start;
+          .ov-item-content {
+            background-color: rgb(242, 204, 91);
+            .content-icon {
+              background-color: rgba(241, 226, 180, 0.685);
+            }
+          }
+        }
+        &:nth-child(3) {
+          justify-content: center;
+          .ov-item-content {
+            background-color: rgb(80, 62, 157);
+            .content-icon {
+              background-color: rgba(111, 100, 160, 0.753);
+            }
+          }
+        }
+        &:nth-child(4) {
+          justify-content: center;
+          .ov-item-content {
+            background-color: rgb(235, 98, 151);
+            .content-icon {
+              background-color: rgba(231, 143, 177, 0.781);
+            }
+          }
+        }
+        &:nth-child(5) {
+          justify-content: flex-end;
+          .ov-item-content {
+            background-color: rgb(204, 193, 235);
+            .content-icon {
+              background-color: rgba(225, 220, 240, 0.74);
+            }
+          }
+        }
+      }
+    }
+    .my-pitches {
+      // background-color: aqua;
+      margin-top: 40px;
+      .pitch {
+        // border: 1px solid black;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        height: 130px;
+        padding: 15px 10px;
+        overflow: hidden;
+        box-shadow: 0 0 5px rgba(59, 59, 59, 0.541);
+        display: flex;
+        background-color: $secondary-theme-color;
+        .pitch-img {
+          width: 10%;
+          // border: 1px solid black;
+        }
+        .pitch-content-wrapper {
+          // border: 1px solid black;
+          width: 75%;
+          padding-left: 7px;
+          h4 {
+            color: $text-color-4;
+            // border: 1px solid black;
+          }
+          p:nth-child(2) {
+            font-size: 15px;
+            font-weight: 700;
+            color: $text-color-2;
+            padding: 5px 0;
+            // border: 1px solid black;
+          }
+          p:nth-child(3) {
+            font-size: 17px;
+            font-weight: 700;
+            color: $text-color-3;
+            padding: 5px 0;
+            // border: 1px solid black;
+          }
+        }
+        &:nth-child(1) {
+          .pitch-img {
+            background: url("images/pitch-img-1.jpg");
+            background-size: cover;
+          }
+        }
+        &:nth-child(2) {
+          .pitch-img {
+            background: url("images/pitch-img-2.jpg");
+            background-size: cover;
+          }
+        }
+        .pitch-edit {
+          // border: 1px solid black;
+          width: 15%;
+          display: flex;
+          flex-direction: column;
+          row-gap: 50px;
+          .toggle-switch {
+            // border: 1px solid black;
+            text-align: center;
+            i {
+              font-size: 20px;
+              cursor: pointer;
+            }
+          }
+          .pitch-delete-edit {
+            // border: 1px solid black;
+            text-align: right;
+            i {
+              margin-left: 15px;
+              font-size: 20px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  // ------------------ header section ---------------
+  header {
+    width: 90%;
+    padding: 30px 0 20px 0;
+    .header_logo {
+      width: 30%;
+    }
+    .header_others {
+      width: 70%;
+      justify-content: right;
+      .dashboard_date {
+        display: none;
+      }
+      .my_account {
+        justify-content: right;
+        .notifications {
+          display: none;
+        }
+        .profile {
+          span {
+            padding: 10px 15px;
+          }
+          a {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  // --------------------- main section ----------------
+  .main {
+    flex-direction: column;
+    // --------------- sidebar ------------
+    .sidebar {
+      width: 100%;
+      // background-color: red;
+      max-height: 100px !important;
+      flex-direction: row;
+      overflow-x: scroll;
+      scrollbar-width: none;
+      .shortcut_element {
+        // width: 200px!important;
+        margin: 0 5px;
+        button {
+          width: 100px !important;
+          height: 100px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-evenly;
+          background-color: $secondary-theme-color;
+          i,
+          span:not(.btn-name) {
+            color: white;
+            background-color: $text-color-4;
+          }
+        }
+      }
+    }
+    // --------------- content ------------
+    .content-wrapper {
+      margin-top: 15px;
+      width: 100%;
+      .user-greeting-panel {
+        margin-top: 10px;
+        flex-direction: column;
+        height: 350px;
+        .panel-body {
+          order: 1;
+          width: 100%;
+          height: 190px;
+          .panel-title {
+            font-size: 32px;
+            text-align: center;
+          }
+        }
+        .panel-img {
+          width: 100%;
+          height: 160px;
+          background-position: center;
+        }
+      }
+      .overview {
+        margin-top: 20px;
+        overflow-x: scroll;
+        p {
+          display: none;
+        }
+        .overview-item {
+          width: 180px;
+          flex-shrink: 0;
+          .ov-item-content {
+            width: 95%;
+          }
+        }
+      }
+      .my-pitches {
+        // background-color: aqua;
+        margin-top: 20px;
+        .pitch {
+          // flex-wrap: wrap;
+          .pitch-img {
+            width: 25%;
+          }
+          .pitch-content-wrapper {
+            width: 60%;
+            overflow-y: scroll;
+            // order: 1;
+          }
+          .pitch-edit {
+            width: 15%;
+            row-gap: 0;
+            text-align: center;
+            .pitch-delete-edit {
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              i {
+                padding: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
